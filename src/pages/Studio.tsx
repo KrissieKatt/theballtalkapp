@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { FanRequestForm } from "@/components/FanRequestForm";
 
 const recentReleases = [
   {
@@ -105,12 +106,13 @@ const Studio = () => {
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto space-y-8">
         <Tabs defaultValue="releases" className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="releases">New Releases</TabsTrigger>
             <TabsTrigger value="artists">Artists</TabsTrigger>
             <TabsTrigger value="tracks">My Tracks</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
             <TabsTrigger value="upload">Upload Demo</TabsTrigger>
+            <TabsTrigger value="requests">Fan Requests</TabsTrigger>
           </TabsList>
 
           {/* New Releases Tab */}
@@ -333,6 +335,13 @@ const Studio = () => {
                   Maximum file size: 50MB. Supported formats: MP3, WAV
                 </p>
               </div>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="requests">
+            <Card className="p-6">
+              <h2 className="text-2xl font-bold mb-6">Make a Request</h2>
+              <FanRequestForm />
             </Card>
           </TabsContent>
         </Tabs>
