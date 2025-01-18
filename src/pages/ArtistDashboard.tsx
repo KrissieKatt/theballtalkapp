@@ -1,51 +1,29 @@
-import { Card } from "@/components/ui/card";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-
-const data = [
-  { name: 'Jan', streams: 4000 },
-  { name: 'Feb', streams: 3000 },
-  { name: 'Mar', streams: 2000 },
-  { name: 'Apr', streams: 2780 },
-  { name: 'May', streams: 1890 },
-  { name: 'Jun', streams: 2390 },
-];
+import { MainNav } from "@/components/MainNav";
 
 const ArtistDashboard = () => {
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Artist Dashboard</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-2">Total Streams</h3>
-          <p className="text-3xl font-bold">16,060</p>
-        </Card>
-        
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-2">Active Listeners</h3>
-          <p className="text-3xl font-bold">1,234</p>
-        </Card>
-        
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-2">Fan Messages</h3>
-          <p className="text-3xl font-bold">89</p>
-        </Card>
-      </div>
-      
-      <Card className="p-6">
-        <h2 className="text-xl font-semibold mb-4">Streaming Analytics</h2>
-        <div className="h-[400px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Line type="monotone" dataKey="streams" stroke="#8884d8" />
-            </LineChart>
-          </ResponsiveContainer>
+    <div className="min-h-screen bg-background">
+      <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 border-b z-50">
+        <div className="flex flex-col">
+          <div className="flex items-center justify-center p-4">
+            <img 
+              src="/lovable-uploads/81ea06a5-3ab9-4fa3-9429-552541f28d65.png" 
+              alt="The Ball Talk App" 
+              className="h-12 w-auto"
+            />
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm">
+            <div className="max-w-7xl mx-auto">
+              <MainNav userType="athlete" />
+            </div>
+          </div>
         </div>
-      </Card>
+      </nav>
+
+      <main className="pt-32 px-4">
+        <h1 className="text-2xl font-bold mb-6">Artist Dashboard</h1>
+        <p>Welcome to your dashboard. Analytics and controls coming soon.</p>
+      </main>
     </div>
   );
 };

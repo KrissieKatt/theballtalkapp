@@ -1,21 +1,29 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Heart, MessageCircle, Share2 } from "lucide-react";
+import { MainNav } from "@/components/MainNav";
 
 const FanFeed = () => {
   return (
     <div className="max-w-2xl mx-auto p-4 space-y-6">
-      <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 border-b z-50 p-4">
-        <div className="flex items-center justify-center">
-          <img 
-            src="/lovable-uploads/81ea06a5-3ab9-4fa3-9429-552541f28d65.png" 
-            alt="The Ball Talk App" 
-            className="h-12 w-auto"
-          />
+      <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 border-b z-50">
+        <div className="flex flex-col">
+          <div className="flex items-center justify-center p-4">
+            <img 
+              src="/lovable-uploads/81ea06a5-3ab9-4fa3-9429-552541f28d65.png" 
+              alt="The Ball Talk App" 
+              className="h-12 w-auto"
+            />
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm">
+            <div className="max-w-2xl mx-auto">
+              <MainNav userType="fan" />
+            </div>
+          </div>
         </div>
       </nav>
       
-      <div className="mt-20 space-y-6">
+      <div className="mt-32 space-y-6">
         {/* Music Post */}
         <div className="border rounded-lg overflow-hidden bg-white shadow-md">
           <div className="p-4 flex items-center space-x-3">
