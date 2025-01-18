@@ -4,8 +4,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { PlayCircle, Upload, MessageCircle, Download } from "lucide-react";
+import { PlayCircle, Upload, MessageCircle, Download, Music, Plus } from "lucide-react";
 import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 const recentReleases = [
   {
@@ -45,7 +55,21 @@ const featuredArtists = [
   },
 ];
 
+interface Track {
+  id: string;
+  title: string;
+  type: 'track' | 'beat';
+  bpm?: number;
+  genre?: string;
+  description: string;
+  audioUrl: string;
+  createdAt: Date;
+}
+
 const Studio = () => {
+  const [tracks, setTracks] = useState<Track[]>([]);
+  const [isAddingTrack, setIsAddingTrack] = useState(false);
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Message sent! We'll get back to you soon.");
@@ -57,13 +81,34 @@ const Studio = () => {
     }
   };
 
+  const handleAddTrack = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    
+    const newTrack: Track = {
+      id: Math.random().toString(36).substring(7),
+      title: formData.get('title') as string,
+      type: formData.get('type') as 'track' | 'beat',
+      bpm: formData.get('bpm') ? Number(formData.get('bpm')) : undefined,
+      genre: formData.get('genre') as string,
+      description: formData.get('description') as string,
+      audioUrl: URL.createObjectURL(formData.get('audio') as File),
+      createdAt: new Date(),
+    };
+
+    setTracks([newTrack, ...tracks]);
+    setIsAddingTrack(false);
+    toast.success("Track added successfully!");
+  };
+
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto space-y-8">
         <Tabs defaultValue="releases" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="releases">New Releases</TabsTrigger>
             <TabsTrigger value="artists">Artists</TabsTrigger>
+            <TabsTrigger value="tracks">My Tracks</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
             <TabsTrigger value="upload">Upload Demo</TabsTrigger>
           </TabsList>
@@ -132,6 +177,114 @@ const Studio = () => {
                   </Button>
                 </Card>
               ))}
+            </div>
+          </TabsContent>
+
+          {/* Tracks Tab */}
+          <TabsContent value="tracks">
+            <div className="space-y-6">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold">My Tracks & Beats</h2>
+                <Dialog open={isAddingTrack} onOpenChange={setIsAddingTrack}>
+                  <DialogTrigger asChild>
+                    <Button>
+                      <Plus className="h-4 w-4 mr-2" />
+                      Add New Track
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Add New Track</DialogTitle>
+                      <DialogDescription>
+                        Upload your track or beat file and add details below.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleAddTrack} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="title">Title</Label>
+                        <Input id="title" name="title" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="type">Type</Label>
+                        <select
+                          id="type"
+                          name="type"
+                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                          required
+                        >
+                          <option value="track">Track</option>
+                          <option value="beat">Beat</option>
+                        </select>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="bpm">BPM (Optional)</Label>
+                          <Input
+                            id="bpm"
+                            name="bpm"
+                            type="number"
+                            min="1"
+                            max="999"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="genre">Genre</Label>
+                          <Input id="genre" name="genre" required />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="description">Description</Label>
+                        <Textarea
+                          id="description"
+                          name="description"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="audio">Audio File</Label>
+                        <Input
+                          id="audio"
+                          name="audio"
+                          type="file"
+                          accept="audio/*"
+                          required
+                        />
+                      </div>
+                      <Button type="submit" className="w-full">
+                        Upload Track
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {tracks.map((track) => (
+                  <Card key={track.id} className="p-4">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-semibold">{track.title}</h3>
+                          <p className="text-sm text-muted-foreground">
+                            {track.type.charAt(0).toUpperCase() + track.type.slice(1)}
+                            {track.bpm && ` • ${track.bpm} BPM`}
+                            {track.genre && ` • ${track.genre}`}
+                          </p>
+                        </div>
+                        <Music className="h-8 w-8 text-muted-foreground" />
+                      </div>
+                      <p className="text-sm">{track.description}</p>
+                      <audio
+                        controls
+                        className="w-full"
+                        src={track.audioUrl}
+                      >
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
           </TabsContent>
 
