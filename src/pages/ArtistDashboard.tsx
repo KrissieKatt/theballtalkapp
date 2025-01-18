@@ -6,7 +6,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { useState } from "react";
-import { PlusCircle, Users, PlayCircle, TrendingUp } from "lucide-react";
+import { PlusCircle, Users, PlayCircle, TrendingUp, MessageCircle, BellDot } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { toast } from "sonner";
 
 const mockStreamingData = [
   { date: '2024-01', streams: 4000 },
@@ -25,6 +27,18 @@ const mockArtists = [
 
 const ArtistDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [hasUnreadMessages, setHasUnreadMessages] = useState(true);
+
+  // Simulate receiving a new message
+  const simulateNewMessage = () => {
+    toast("New Message", {
+      description: "You have a new message from John Smith",
+      action: {
+        label: "View",
+        onClick: () => setHasUnreadMessages(false)
+      },
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -155,6 +169,50 @@ const ArtistDashboard = () => {
           </div>
         </Card>
       </main>
+
+      {/* Floating Chat Button */}
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button
+            variant="default"
+            size="icon"
+            className="fixed bottom-6 right-6 rounded-full shadow-lg"
+            onClick={() => setHasUnreadMessages(false)}
+          >
+            <div className="relative">
+              <MessageCircle className="h-6 w-6" />
+              {hasUnreadMessages && (
+                <span className="absolute -top-1 -right-1">
+                  <BellDot className="h-4 w-4 text-red-500" />
+                </span>
+              )}
+            </div>
+          </Button>
+        </SheetTrigger>
+        <SheetContent>
+          <div className="h-full flex flex-col">
+            <h2 className="text-lg font-semibold mb-4">Messages</h2>
+            <div className="flex-1 overflow-y-auto">
+              {/* Chat messages would go here */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-2">
+                  <Avatar>
+                    <AvatarFallback>JS</AvatarFallback>
+                  </Avatar>
+                  <div className="bg-muted p-3 rounded-lg">
+                    <p className="text-sm font-medium">John Smith</p>
+                    <p className="text-sm text-muted-foreground">Hey, loved your latest track!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 flex gap-2">
+              <Input placeholder="Type a message..." className="flex-1" />
+              <Button onClick={() => toast.success("Message sent!")}>Send</Button>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 };
