@@ -1,64 +1,42 @@
-import { JourneyStage } from "@/components/JourneyStage";
-
-const journeyData = [
-  {
-    title: "STAGE",
-    color: "bg-stage-blue/20",
-    items: [
-      {
-        title: "Athlete Journey - Verification",
-        description: "Upload identification documents, Submit league affiliation, Complete profile setup",
-      },
-      {
-        title: "Athlete Journey - Music Creation",
-        description: "Access DAW interface, Browse beat library, Record tracks, Collaborate with others",
-      },
-    ],
-  },
-  {
-    title: "ACTIONS",
-    color: "bg-stage-green/20",
-    items: [
-      {
-        title: "Document Upload",
-        description: "Mobile/Web verification portal, Document upload interface, Profile creation form",
-      },
-      {
-        title: "Music Production",
-        description: "DAW workspace, Beat library, Recording interface, Collaboration tools",
-      },
-    ],
-  },
-  {
-    title: "TOUCHPOINTS",
-    color: "bg-stage-yellow/20",
-    items: [
-      {
-        title: "Platform Access",
-        description: "Anticipation of platform access, Concern about privacy, Professional recognition",
-      },
-      {
-        title: "Creative Process",
-        description: "Creative freedom, Professional capability, Collaborative excitement",
-      },
-    ],
-  },
-];
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Music, Users, MessageSquare, Mic } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white p-8">
-      <h1 className="text-3xl font-bold mb-8">Customer Journey Map</h1>
-      <div className="overflow-x-auto">
-        <div className="flex gap-8 min-w-max pb-8">
-          {journeyData.map((stage, index) => (
-            <JourneyStage
-              key={index}
-              title={stage.title}
-              color={stage.color}
-              items={stage.items}
-            />
-          ))}
+    <div className="min-h-screen bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+      <div className="max-w-3xl mx-auto p-6 text-center text-white">
+        <h1 className="text-5xl font-bold mb-6">AthleteBeats</h1>
+        <p className="text-xl mb-12">Where athletes share their music with fans</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <Link to="/feed">
+            <Button className="w-full h-32 text-lg" variant="secondary">
+              <Users className="mr-2 h-6 w-6" />
+              Fan Feed
+            </Button>
+          </Link>
+          
+          <Link to="/artist">
+            <Button className="w-full h-32 text-lg" variant="secondary">
+              <Music className="mr-2 h-6 w-6" />
+              Artist Dashboard
+            </Button>
+          </Link>
+          
+          <Link to="/studio">
+            <Button className="w-full h-32 text-lg" variant="secondary">
+              <Mic className="mr-2 h-6 w-6" />
+              Music Studio
+            </Button>
+          </Link>
+          
+          <Link to="/chat">
+            <Button className="w-full h-32 text-lg" variant="secondary">
+              <MessageSquare className="mr-2 h-6 w-6" />
+              Chat Rooms
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
