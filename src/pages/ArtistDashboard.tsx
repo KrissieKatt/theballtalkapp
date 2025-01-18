@@ -5,7 +5,7 @@ const ArtistDashboard = () => {
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 border-b z-50">
         <div className="flex flex-col">
-          <div className="flex items-center justify-center p-4">
+          <div className="flex items-center p-4 max-w-7xl mx-auto w-full">
             <img 
               src="/lovable-uploads/81ea06a5-3ab9-4fa3-9429-552541f28d65.png" 
               alt="The Ball Talk App" 
