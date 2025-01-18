@@ -17,6 +17,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { FanRequestForm } from "@/components/FanRequestForm";
+import { NewReleaseForm } from "@/components/NewReleaseForm";
 
 const recentReleases = [
   {
@@ -106,8 +107,9 @@ const Studio = () => {
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto space-y-8">
         <Tabs defaultValue="releases" className="w-full">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-7">
             <TabsTrigger value="releases">New Releases</TabsTrigger>
+            <TabsTrigger value="post-release">Post Release</TabsTrigger>
             <TabsTrigger value="artists">Artists</TabsTrigger>
             <TabsTrigger value="tracks">My Tracks</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
@@ -153,6 +155,14 @@ const Studio = () => {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          {/* Post Release Tab */}
+          <TabsContent value="post-release">
+            <Card className="p-6">
+              <h2 className="text-2xl font-bold mb-6">Post New Release</h2>
+              <NewReleaseForm />
+            </Card>
           </TabsContent>
 
           {/* Artists Tab */}
