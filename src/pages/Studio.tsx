@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { FanRequestForm } from "@/components/FanRequestForm";
 import { NewReleaseForm } from "@/components/NewReleaseForm";
 
 const recentReleases = [
@@ -72,11 +71,6 @@ const Studio = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [isAddingTrack, setIsAddingTrack] = useState(false);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent! We'll get back to you soon.");
-  };
-
   const handleDemoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
       toast.success("Demo uploaded successfully!");
@@ -107,14 +101,12 @@ const Studio = () => {
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto space-y-8">
         <Tabs defaultValue="releases" className="w-full">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="releases">New Releases</TabsTrigger>
             <TabsTrigger value="post-release">Post Release</TabsTrigger>
             <TabsTrigger value="artists">Artists</TabsTrigger>
             <TabsTrigger value="tracks">My Tracks</TabsTrigger>
-            <TabsTrigger value="contact">Contact</TabsTrigger>
             <TabsTrigger value="upload">Upload Demo</TabsTrigger>
-            <TabsTrigger value="requests">Fan Requests</TabsTrigger>
           </TabsList>
 
           {/* New Releases Tab */}
@@ -300,27 +292,6 @@ const Studio = () => {
             </div>
           </TabsContent>
 
-          {/* Contact Tab */}
-          <TabsContent value="contact">
-            <Card className="p-6">
-              <form onSubmit={handleContactSubmit} className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium">Name</label>
-                  <Input required />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Email</label>
-                  <Input type="email" required />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Message</label>
-                  <Textarea required className="min-h-[150px]" />
-                </div>
-                <Button type="submit">Send Message</Button>
-              </form>
-            </Card>
-          </TabsContent>
-
           {/* Upload Demo Tab */}
           <TabsContent value="upload">
             <Card className="p-6">
@@ -345,13 +316,6 @@ const Studio = () => {
                   Maximum file size: 50MB. Supported formats: MP3, WAV
                 </p>
               </div>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="requests">
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold mb-6">Make a Request</h2>
-              <FanRequestForm />
             </Card>
           </TabsContent>
         </Tabs>
