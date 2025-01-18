@@ -38,7 +38,7 @@ const FanFeed = () => {
       </nav>
       
       <div className="mt-32 space-y-8">
-        {/* Featured Live Stream */}
+        {/* Featured Music */}
         <div className="border rounded-lg overflow-hidden bg-white shadow-md">
           <div className="p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -47,52 +47,52 @@ const FanFeed = () => {
                 <AvatarFallback>AT</AvatarFallback>
               </Avatar>
               <div>
-                <h3 className="font-semibold">Live Training Session</h3>
-                <p className="text-sm text-red-500">LIVE NOW</p>
+                <h3 className="font-semibold">New Track Release</h3>
+                <p className="text-sm text-green-500">Featured Artist</p>
               </div>
             </div>
             <Button 
               variant="ghost" 
               size="icon"
               onClick={togglePlay}
-              className="hover:bg-red-50"
+              className="hover:bg-green-50"
             >
-              {isPlaying ? <Pause className="h-6 w-6 text-red-500" /> : <Play className="h-6 w-6 text-red-500" />}
+              {isPlaying ? <Pause className="h-6 w-6 text-green-500" /> : <Play className="h-6 w-6 text-green-500" />}
             </Button>
           </div>
           
-          <div className="aspect-video bg-gray-900 relative">
-            <video 
-              className="w-full h-full object-cover"
-              poster="https://images.unsplash.com/photo-1546519638-68e109498ffc"
-              controls
-            >
-              <source src="https://example.com/live-stream" type="video/mp4" />
-              Your browser does not support the video element.
-            </video>
+          <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 relative">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <audio 
+                controls 
+                className="w-full px-4"
+                src="https://example.com/featured-track.mp3"
+              >
+                Your browser does not support the audio element.
+              </audio>
+            </div>
           </div>
         </div>
 
-        {/* Video Carousel */}
+        {/* Music Carousel */}
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Latest Videos</h2>
+          <h2 className="text-xl font-semibold">Latest Tracks</h2>
           <Carousel className="w-full">
             <CarouselContent>
               {[1, 2, 3, 4].map((index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="border rounded-lg overflow-hidden bg-white shadow-md">
-                    <div className="aspect-video bg-gray-900">
-                      <video 
-                        className="w-full h-full object-cover"
-                        poster={`https://images.unsplash.com/photo-${index}`}
+                    <div className="aspect-square bg-gradient-to-br from-purple-100 to-blue-100 p-4">
+                      <audio 
                         controls
+                        className="w-full"
+                        src={`https://example.com/track-${index}.mp3`}
                       >
-                        <source src={`https://example.com/video-${index}`} type="video/mp4" />
-                        Your browser does not support the video element.
-                      </video>
+                        Your browser does not support the audio element.
+                      </audio>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold">Training Highlight #{index}</h3>
+                      <h3 className="font-semibold">Track #{index}</h3>
                       <p className="text-sm text-gray-500">2 hours ago</p>
                     </div>
                   </div>
@@ -104,7 +104,7 @@ const FanFeed = () => {
           </Carousel>
         </div>
 
-        {/* Audio Post */}
+        {/* Audio Post with Social Interaction */}
         <div className="border rounded-lg overflow-hidden bg-white shadow-md">
           <div className="p-4 flex items-center space-x-3">
             <Avatar>
