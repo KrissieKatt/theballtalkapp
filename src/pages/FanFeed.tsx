@@ -1,6 +1,7 @@
 import { LiveSection } from "@/components/LiveSection";
 import { TrendingTracks } from "@/components/TrendingTracks";
 import { PopularAthletes } from "@/components/PopularAthletes";
+import { Discovery } from "@/components/Discovery";
 import { Search, User, Home, Compass, Radio, Library } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
@@ -38,6 +39,7 @@ const FanFeed = () => {
 
         {/* Main Content */}
         <main className="p-4 space-y-8">
+          <Discovery />
           <LiveSection />
           <TrendingTracks />
           <PopularAthletes />
