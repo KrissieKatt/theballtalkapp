@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Heart, Share2, Play } from "lucide-react";
+import { Play, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Track {
@@ -7,6 +7,7 @@ interface Track {
   title: string;
   artist: string;
   plays: string;
+  imageUrl: string;
 }
 
 const tracks: Track[] = [
@@ -14,44 +15,51 @@ const tracks: Track[] = [
     id: "1",
     title: "Game Day Vibes",
     artist: "Marcus Thompson",
-    plays: "125K plays"
+    plays: "125K plays",
+    imageUrl: "/placeholder.svg"
   },
   {
     id: "2",
     title: "Championship Flow",
     artist: "Sarah Williams",
-    plays: "98K plays"
+    plays: "98K plays",
+    imageUrl: "/placeholder.svg"
   }
 ];
 
 export const TrendingTracks = () => {
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold">Trending Tracks</h2>
-      <div className="space-y-2">
-        {tracks.map((track) => (
-          <Card key={track.id} className="p-4 bg-[#1a1b1e] border-none">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-zinc-800 rounded-md flex items-center justify-center">
-                <Play className="w-6 h-6" />
-              </div>
+    <div className="grid grid-cols-2 gap-4">
+      {tracks.map((track) => (
+        <Card key={track.id} className="bg-[#1A1B1E] border-none p-3">
+          <div className="relative w-full aspect-square bg-[#2A2B2E] rounded-lg mb-3 overflow-hidden group">
+            <img 
+              src={track.imageUrl} 
+              alt={track.title}
+              className="w-full h-full object-cover"
+            />
+            <Button 
+              size="icon"
+              variant="ghost"
+              className="absolute bottom-2 right-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <Play className="h-4 w-4" />
+            </Button>
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-start justify-between gap-2">
               <div className="flex-1">
-                <h3 className="font-semibold">{track.title}</h3>
-                <p className="text-sm text-zinc-400">{track.artist}</p>
-                <p className="text-xs text-zinc-500">{track.plays}</p>
+                <h3 className="font-semibold text-sm truncate">{track.title}</h3>
+                <p className="text-xs text-muted-foreground truncate">{track.artist}</p>
               </div>
-              <div className="flex gap-2">
-                <Button variant="ghost" size="icon" className="hover:bg-white/10">
-                  <Heart className="w-4 h-4" />
-                </Button>
-                <Button variant="ghost" size="icon" className="hover:bg-white/10">
-                  <Share2 className="w-4 h-4" />
-                </Button>
-              </div>
+              <Button variant="ghost" size="icon" className="h-8 w-8">
+                <Heart className="h-4 w-4" />
+              </Button>
             </div>
-          </Card>
-        ))}
-      </div>
+            <p className="text-xs text-muted-foreground">{track.plays}</p>
+          </div>
+        </Card>
+      ))}
     </div>
   );
 };
