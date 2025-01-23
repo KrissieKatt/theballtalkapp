@@ -1,7 +1,17 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Heart, MessageCircle, Share2, Play, Pause, BadgeCheck } from "lucide-react";
+import { 
+  Heart, 
+  MessageCircle, 
+  Share2, 
+  Play, 
+  Pause, 
+  BadgeCheck, 
+  Bookmark, 
+  Download, 
+  Music 
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -16,12 +26,14 @@ interface MusicPostProps {
     comments: number;
     imageUrl: string;
     verified: boolean;
+    appleMusicUrl?: string;
   };
 }
 
 export const MusicPost = ({ post }: MusicPostProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -31,6 +43,20 @@ export const MusicPost = ({ post }: MusicPostProps) => {
   const handleLike = () => {
     setIsLiked(!isLiked);
     toast.success(isLiked ? "Removed from liked songs" : "Added to liked songs");
+  };
+
+  const handleBookmark = () => {
+    setIsBookmarked(!isBookmarked);
+    toast.success(isBookmarked ? "Removed from bookmarks" : "Added to bookmarks");
+  };
+
+  const handleAppleMusic = () => {
+    if (post.appleMusicUrl) {
+      window.open(post.appleMusicUrl, '_blank');
+      toast.success("Opening in Apple Music");
+    } else {
+      toast.error("Apple Music link not available");
+    }
   };
 
   const handleShare = () => {
@@ -96,6 +122,22 @@ export const MusicPost = ({ post }: MusicPostProps) => {
             className="text-white hover:text-white/80"
           >
             <MessageCircle className="h-6 w-6" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white hover:text-white/80"
+            onClick={handleBookmark}
+          >
+            <Bookmark className={`h-6 w-6 ${isBookmarked ? "fill-yellow-500 text-yellow-500" : ""}`} />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white hover:text-white/80"
+            onClick={handleAppleMusic}
+          >
+            <Music className="h-6 w-6" />
           </Button>
           <Button
             variant="ghost"
