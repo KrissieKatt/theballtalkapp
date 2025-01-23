@@ -36,51 +36,73 @@ const ListItem = forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-export function MainNav({ userType }: { userType: "fan" | "athlete" }) {
+export function MainNav({ userType }: { userType: "fan" | "athlete" | "admin" }) {
   return (
     <NavigationMenu className="max-w-full w-full justify-start">
       <NavigationMenuList>
-        {userType === "fan" ? (
+        {userType === "fan" && (
           <>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Discover</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  <ListItem href="/feed" title="Feed">
+                  <ListItem href="/fan/feed" title="Feed">
                     Browse the latest music from athletes
                   </ListItem>
-                  <ListItem href="/chat" title="Chat Rooms">
+                  <ListItem href="/fan/chat" title="Chat Rooms">
                     Join live discussions with athletes
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link to="/feed" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+              <Link to="/fan/feed" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                 Home
               </Link>
             </NavigationMenuItem>
           </>
-        ) : (
+        )}
+        
+        {userType === "athlete" && (
           <>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Dashboard</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  <ListItem href="/artist" title="Analytics">
+                  <ListItem href="/athlete/dashboard" title="Analytics">
                     View your streaming analytics
                   </ListItem>
-                  <ListItem href="/studio" title="Studio">
+                  <ListItem href="/athlete/studio" title="Studio">
                     Create and edit your music
                   </ListItem>
-                  <ListItem href="/chat" title="Fan Engagement">
+                  <ListItem href="/athlete/chat" title="Fan Engagement">
                     Chat with your fans
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link to="/artist" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+              <Link to="/athlete/dashboard" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                Home
+              </Link>
+            </NavigationMenuItem>
+          </>
+        )}
+
+        {userType === "admin" && (
+          <>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Admin</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <ListItem href="/admin" title="Dashboard">
+                    Manage verifications and users
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/admin" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                 Home
               </Link>
             </NavigationMenuItem>

@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import FanFeed from "./pages/FanFeed";
 import ArtistDashboard from "./pages/ArtistDashboard";
@@ -10,6 +10,7 @@ import Studio from "./pages/Studio";
 import ChatRoom from "./pages/ChatRoom";
 import { AthleteLoginForm } from "./components/AthleteLoginForm";
 import { AthleteVerificationForm } from "./components/AthleteVerificationForm";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -20,13 +21,28 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Public routes */}
           <Route path="/" element={<Index />} />
-          <Route path="/feed" element={<FanFeed />} />
-          <Route path="/artist" element={<ArtistDashboard />} />
-          <Route path="/studio" element={<Studio />} />
-          <Route path="/chat" element={<ChatRoom />} />
-          <Route path="/athlete/login" element={<AthleteLoginForm />} />
-          <Route path="/athlete/verify" element={<AthleteVerificationForm />} />
+          
+          {/* Fan routes */}
+          <Route path="/fan">
+            <Route path="feed" element={<FanFeed />} />
+            <Route path="chat" element={<ChatRoom />} />
+          </Route>
+          
+          {/* Athlete routes */}
+          <Route path="/athlete">
+            <Route path="login" element={<AthleteLoginForm />} />
+            <Route path="verify" element={<AthleteVerificationForm />} />
+            <Route path="dashboard" element={<ArtistDashboard />} />
+            <Route path="studio" element={<Studio />} />
+          </Route>
+          
+          {/* Admin routes */}
+          <Route path="/admin" element={<AdminDashboard />} />
+          
+          {/* Fallback route */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
