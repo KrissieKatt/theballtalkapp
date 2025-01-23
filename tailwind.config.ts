@@ -22,6 +22,11 @@ export default {
         sans: ["Inter", "sans-serif"],
       },
       colors: {
+        brand: {
+          blue: "#4F46E5",
+          purple: "#9b87f5",
+          pink: "#D946EF",
+        },
         stage: {
           blue: "#7DD3FC",
           green: "#86EFAC",
@@ -62,16 +67,9 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
         },
-        sidebar: {
-          DEFAULT: 'hsl(var(--sidebar-background))',
-          foreground: 'hsl(var(--sidebar-foreground))',
-          primary: 'hsl(var(--sidebar-primary))',
-          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-          accent: 'hsl(var(--sidebar-accent))',
-          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-          border: 'hsl(var(--sidebar-border))',
-          ring: 'hsl(var(--sidebar-ring))'
-        }
+      },
+      backgroundImage: {
+        'gradient-brand': 'linear-gradient(to right, #4F46E5, #9b87f5, #D946EF)',
       },
     },
   },
