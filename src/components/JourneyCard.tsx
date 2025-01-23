@@ -11,7 +11,7 @@ export const JourneyCard = ({ title, description, className }: JourneyCardProps)
   return (
     <Card className={cn("w-[300px] p-4 hover:shadow-lg transition-shadow", className)}>
       <h3 className="font-semibold mb-2">{title}</h3>
-      <p className="text-sm text-gray-600">{description}</p>
+      <p className="text-sm opacity-80">{description}</p>
     </Card>
   );
 };

@@ -20,6 +20,7 @@ export const JourneyStage = ({ title, color, items }: JourneyStageProps) => {
             key={index}
             title={item.title}
             description={item.description}
+            className="bg-black/20 backdrop-blur-sm border-none text-white"
           />
         ))}
       </div>
