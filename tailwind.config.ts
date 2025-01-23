@@ -23,6 +23,11 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        roll: {
+          '0%': { transform: 'translateX(-50px) rotate(0deg)' },
+          '50%': { transform: 'translateX(50px) rotate(180deg)' },
+          '100%': { transform: 'translateX(-50px) rotate(360deg)' },
+        }
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

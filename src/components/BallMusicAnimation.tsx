@@ -5,8 +5,10 @@ export const BallMusicAnimation = () => {
   return (
     <div className="relative h-32 w-32 mx-auto">
       {/* Ball */}
-      <div className="absolute w-full animate-[bounce_2s_infinite]">
-        <Volleyball className="h-8 w-8 text-white" />
+      <div className="absolute w-full animate-[bounce_2s_infinite] group">
+        <div className="animate-[roll_4s_linear_infinite]">
+          <Volleyball className="h-8 w-8 text-white" />
+        </div>
       </div>
       
       {/* Music Notes */}
