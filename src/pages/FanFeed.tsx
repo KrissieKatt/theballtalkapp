@@ -17,22 +17,22 @@ const FanFeed = () => {
         }`}>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <span className="font-bold text-lg text-primary-foreground">BALL</span>
+              <span className="font-bold text-lg text-white">BALL</span>
               <img 
                 src="/lovable-uploads/b727a3b8-3afa-4077-84f9-9d8fc2215ca1.png" 
                 alt="Ball Talk Logo" 
                 className="h-6 w-6"
               />
-              <span className="font-bold text-lg text-primary-foreground">TALK</span>
+              <span className="font-bold text-lg text-white">TALK</span>
             </div>
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/70" />
               <Input 
                 placeholder="Search athletes, tracks..." 
-                className="w-full bg-white/10 border-none pl-10 text-primary-foreground placeholder:text-muted-foreground"
+                className="w-full bg-white/10 border-none pl-10 text-white placeholder:text-white/50"
               />
             </div>
-            <User className="h-6 w-6 text-primary-foreground" />
+            <User className="h-6 w-6 text-white" />
           </div>
         </header>
 
@@ -48,19 +48,19 @@ const FanFeed = () => {
           isScrollingDown ? "translate-y-full" : "translate-y-0"
         }`}>
           <div className="max-w-lg mx-auto flex justify-around py-3">
-            <button className="flex flex-col items-center gap-1 text-xs text-primary-foreground hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
               <Home className="h-6 w-6" />
               <span>Home</span>
             </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-primary-foreground hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
               <Compass className="h-6 w-6" />
               <span>Discover</span>
             </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-primary-foreground hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
               <Radio className="h-6 w-6" />
               <span>Live</span>
             </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-primary-foreground hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
               <Library className="h-6 w-6" />
               <span>Library</span>
             </button>
