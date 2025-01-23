@@ -3,13 +3,18 @@ import { TrendingTracks } from "@/components/TrendingTracks";
 import { PopularAthletes } from "@/components/PopularAthletes";
 import { Search, User, Home, Compass, Radio, Library } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
 
 const FanFeed = () => {
+  const isScrollingDown = useScrollDirection();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-blue via-brand-purple to-brand-pink">
       <div className="max-w-lg mx-auto">
         {/* Header */}
-        <header className="sticky top-0 bg-black/20 backdrop-blur-sm z-50 px-4 py-3 border-b border-white/10">
+        <header className={`sticky top-0 bg-black/20 backdrop-blur-sm z-50 px-4 py-3 border-b border-white/10 transition-transform duration-300 ${
+          isScrollingDown ? "-translate-y-full" : "translate-y-0"
+        }`}>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
               <span className="font-bold text-lg text-primary-foreground">BALL</span>
@@ -39,7 +44,9 @@ const FanFeed = () => {
         </main>
 
         {/* Bottom Navigation */}
-        <nav className="fixed bottom-0 left-0 right-0 bg-black/20 backdrop-blur-sm border-t border-white/10">
+        <nav className={`fixed bottom-0 left-0 right-0 bg-black/20 backdrop-blur-sm border-t border-white/10 transition-transform duration-300 ${
+          isScrollingDown ? "translate-y-full" : "translate-y-0"
+        }`}>
           <div className="max-w-lg mx-auto flex justify-around py-3">
             <button className="flex flex-col items-center gap-1 text-xs text-primary-foreground hover:text-white transition-colors">
               <Home className="h-6 w-6" />
