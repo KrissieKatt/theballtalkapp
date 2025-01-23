@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Music, Users, MessageSquare, Crown } from "lucide-react";
 import { JourneyStage } from "@/components/JourneyStage";
+import { BallMusicAnimation } from "@/components/BallMusicAnimation";
 
 const Index = () => {
   const journeyStages = [
@@ -72,6 +73,7 @@ const Index = () => {
             alt="The Ball Talk App" 
             className="h-24 w-auto mx-auto mb-6"
           />
+          <BallMusicAnimation />
           <h1 className="text-4xl font-bold mb-4">Your Journey in Athlete Music</h1>
           <p className="text-xl opacity-80 mb-8">Connect with athletes through their music journey</p>
         </div>
