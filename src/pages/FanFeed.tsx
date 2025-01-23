@@ -46,19 +46,19 @@ const FanFeed = () => {
           isScrollingDown ? "translate-y-full" : "translate-y-0"
         }`}>
           <div className="max-w-lg mx-auto flex justify-around py-3">
-            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
               <Home className="h-6 w-6" />
               <span>Home</span>
             </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
               <Compass className="h-6 w-6" />
               <span>Discover</span>
             </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
               <Radio className="h-6 w-6" />
               <span>Live</span>
             </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-white/90 hover:text-white transition-colors">
+            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
               <Library className="h-6 w-6" />
               <span>Library</span>
             </button>

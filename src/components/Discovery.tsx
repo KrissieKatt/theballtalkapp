@@ -27,20 +27,20 @@ export const Discovery = () => {
       {/* Search Section */}
       <div className="relative flex items-center gap-2">
         <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/70" />
           <Input 
             placeholder="Discover athletes, tracks, or playlists..." 
-            className="apple-input pl-10"
+            className="apple-input pl-10 bg-white/10 text-white placeholder:text-white/50"
           />
         </div>
-        <Button variant="ghost" size="icon" className="text-muted-foreground">
+        <Button variant="ghost" size="icon" className="text-white/70 hover:text-white">
           <Filter className="h-4 w-4" />
         </Button>
       </div>
 
       {/* Categories */}
       <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-muted-foreground">Popular Categories</h3>
+        <h3 className="text-sm font-semibold text-white/90">Popular Categories</h3>
         <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
           <Badge
             variant="secondary"
@@ -52,7 +52,7 @@ export const Discovery = () => {
             <Badge
               key={category.name}
               variant="secondary"
-              className="apple-card hover:bg-accent/50 px-4 py-1.5"
+              className="apple-card hover:bg-accent/50 px-4 py-1.5 text-white"
             >
               {category.name} ({category.count})
             </Badge>
@@ -62,7 +62,7 @@ export const Discovery = () => {
 
       {/* Trending Now */}
       <div className="space-y-3">
-        <h3 className="text-sm font-semibold text-muted-foreground">Trending Now</h3>
+        <h3 className="text-sm font-semibold text-white/90">Trending Now</h3>
         <div className="grid grid-cols-2 gap-3">
           {trending.map((item) => (
             <Card 
@@ -85,7 +85,7 @@ export const Discovery = () => {
       {/* Discover More */}
       <Button 
         variant="ghost" 
-        className="w-full apple-card group hover:bg-gradient-to-r hover:from-brand-blue/10 hover:to-brand-purple/10"
+        className="w-full apple-card group hover:bg-gradient-to-r hover:from-brand-blue/10 hover:to-brand-purple/10 text-white"
         onClick={() => toast({
           title: "Explore More",
           description: "More discovery features coming soon!"
