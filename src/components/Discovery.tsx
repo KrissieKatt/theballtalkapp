@@ -13,10 +13,10 @@ const categories = [
 ];
 
 const trending = [
-  { title: "Pre-Game Warmup", genre: "Workout", color: "bg-stage-blue" },
-  { title: "Victory Vibes", genre: "Celebration", color: "bg-stage-green" },
-  { title: "Game Day", genre: "Motivation", color: "bg-stage-yellow" },
-  { title: "Training Mode", genre: "Focus", color: "bg-stage-orange" },
+  { title: "Pre-Game Warmup", genre: "Workout", color: "bg-gradient-to-br from-brand-blue to-brand-purple" },
+  { title: "Victory Vibes", genre: "Celebration", color: "bg-gradient-to-br from-brand-purple to-brand-pink" },
+  { title: "Game Day", genre: "Motivation", color: "bg-gradient-to-br from-stage-blue to-stage-green" },
+  { title: "Training Mode", genre: "Focus", color: "bg-gradient-to-br from-stage-orange to-stage-pink" },
 ];
 
 export const Discovery = () => {
@@ -44,7 +44,7 @@ export const Discovery = () => {
         <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
           <Badge
             variant="secondary"
-            className="bg-brand-blue text-white hover:bg-brand-blue/90 px-4 py-1.5"
+            className="bg-gradient-to-r from-brand-blue to-brand-purple text-white hover:opacity-90 px-4 py-1.5"
           >
             All
           </Badge>
@@ -52,7 +52,7 @@ export const Discovery = () => {
             <Badge
               key={category.name}
               variant="secondary"
-              className="apple-card px-4 py-1.5"
+              className="apple-card hover:bg-accent/50 px-4 py-1.5"
             >
               {category.name} ({category.count})
             </Badge>
@@ -67,7 +67,7 @@ export const Discovery = () => {
           {trending.map((item) => (
             <Card 
               key={item.title}
-              className={`${item.color} p-4 hover:opacity-90 transition-opacity cursor-pointer`}
+              className={`${item.color} p-4 hover:opacity-90 transition-all duration-300 cursor-pointer backdrop-blur-sm shadow-lg`}
               onClick={() => toast({
                 title: "Coming Soon",
                 description: `${item.title} playlist will be available soon!`
@@ -85,7 +85,7 @@ export const Discovery = () => {
       {/* Discover More */}
       <Button 
         variant="ghost" 
-        className="w-full apple-card group"
+        className="w-full apple-card group hover:bg-gradient-to-r hover:from-brand-blue/10 hover:to-brand-purple/10"
         onClick={() => toast({
           title: "Explore More",
           description: "More discovery features coming soon!"
