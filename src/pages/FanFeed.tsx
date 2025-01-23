@@ -17,15 +17,11 @@ const FanFeed = () => {
           isScrollingDown ? "-translate-y-full" : "translate-y-0"
         }`}>
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
-              <span className="font-bold text-lg text-white">BALL</span>
-              <img 
-                src="/lovable-uploads/b727a3b8-3afa-4077-84f9-9d8fc2215ca1.png" 
-                alt="Ball Talk Logo" 
-                className="h-6 w-6"
-              />
-              <span className="font-bold text-lg text-white">TALK</span>
-            </div>
+            <img 
+              src="/lovable-uploads/ba22cb9d-1e8d-477c-b9c3-ecefdfdf7f44.png" 
+              alt="The Ball Talk App" 
+              className="h-8 w-auto"
+            />
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/70" />
               <Input 
