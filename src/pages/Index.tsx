@@ -69,9 +69,9 @@ const Index = () => {
       <div className="max-w-7xl mx-auto p-6 text-apple-light-text dark:text-apple-dark-text">
         <div className="mb-12 text-center space-y-6">
           <img 
-            src="/lovable-uploads/81ea06a5-3ab9-4fa3-9429-552541f28d65.png" 
+            src="/lovable-uploads/6450fd7b-0d43-4e9f-8321-70c86bcd595c.png" 
             alt="The Ball Talk App" 
-            className="h-24 w-auto mx-auto"
+            className="h-32 w-auto mx-auto"
           />
           <BallMusicAnimation />
           <div className="space-y-4">
@@ -98,7 +98,7 @@ const Index = () => {
 
         {/* Action Buttons */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <Link to="/feed" className="apple-card group">
+          <Link to="/fan/feed" className="apple-card group">
             <Button className="w-full h-32 text-lg bg-transparent hover:bg-transparent" variant="ghost">
               <div className="flex flex-col items-center gap-3">
                 <Users className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
@@ -107,7 +107,7 @@ const Index = () => {
             </Button>
           </Link>
           
-          <Link to="/artist" className="apple-card group">
+          <Link to="/athlete/login" className="apple-card group">
             <Button className="w-full h-32 text-lg bg-transparent hover:bg-transparent" variant="ghost">
               <div className="flex flex-col items-center gap-3">
                 <Music className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
@@ -116,7 +116,7 @@ const Index = () => {
             </Button>
           </Link>
           
-          <Link to="/chat" className="apple-card group">
+          <Link to="/fan/chat" className="apple-card group">
             <Button className="w-full h-32 text-lg bg-transparent hover:bg-transparent" variant="ghost">
               <div className="flex flex-col items-center gap-3">
                 <MessageSquare className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
@@ -125,7 +125,7 @@ const Index = () => {
             </Button>
           </Link>
           
-          <Link to="/feed?premium=true" className="apple-card group">
+          <Link to="/fan/feed?premium=true" className="apple-card group">
             <Button className="w-full h-32 text-lg bg-transparent hover:bg-transparent" variant="ghost">
               <div className="flex flex-col items-center gap-3">
                 <Crown className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
