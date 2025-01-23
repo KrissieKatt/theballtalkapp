@@ -30,9 +30,21 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["-apple-system", "BlinkMacSystemFont", "Inter", "sans-serif"],
       },
       colors: {
+        apple: {
+          light: {
+            bg: '#F1F1F1',
+            text: '#222222',
+            secondary: '#333333',
+          },
+          dark: {
+            bg: '#221F26',
+            text: '#FFFFFF',
+            secondary: '#F1F1F1',
+          }
+        },
         brand: {
           blue: "#4F46E5",
           purple: "#9b87f5",
