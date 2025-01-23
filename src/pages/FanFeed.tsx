@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { MusicPost } from "@/components/MusicPost";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const FanFeed = () => {
   const isScrollingDown = useScrollDirection();
@@ -64,18 +65,64 @@ const FanFeed = () => {
 
         {/* Main Feed */}
         <main className="p-4 space-y-6">
-          <Discovery />
-          
-          {/* Music Posts Feed */}
-          <div className="space-y-6">
-            {posts.map((post) => (
-              <MusicPost key={post.id} post={post} />
-            ))}
-          </div>
+          {/* Live Now Section */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-white">Live Now</h2>
+              <Button variant="link" className="text-white">See All</Button>
+            </div>
+            <p className="text-white/70 text-sm">Watch athletes perform live and interact in real-time</p>
+            <LiveSection />
+          </section>
 
-          <LiveSection />
-          <TrendingTracks />
-          <PopularAthletes />
+          <Separator className="bg-white/10" />
+
+          {/* Discovery Section */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-white">Discover</h2>
+              <Button variant="link" className="text-white">Explore</Button>
+            </div>
+            <p className="text-white/70 text-sm">Find new athletes and tracks based on your interests</p>
+            <Discovery />
+          </section>
+
+          <Separator className="bg-white/10" />
+
+          {/* Music Feed */}
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white">Latest Tracks</h2>
+            <p className="text-white/70 text-sm">New releases from athletes you follow</p>
+            <div className="space-y-6">
+              {posts.map((post) => (
+                <MusicPost key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+
+          <Separator className="bg-white/10" />
+
+          {/* Trending Section */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-white">Trending Now</h2>
+              <Button variant="link" className="text-white">View All</Button>
+            </div>
+            <p className="text-white/70 text-sm">Most popular tracks this week</p>
+            <TrendingTracks />
+          </section>
+
+          <Separator className="bg-white/10" />
+
+          {/* Popular Athletes */}
+          <section className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-white">Popular Athletes</h2>
+              <Button variant="link" className="text-white">See All</Button>
+            </div>
+            <p className="text-white/70 text-sm">Athletes making waves in music</p>
+            <PopularAthletes />
+          </section>
         </main>
 
         {/* Bottom Navigation */}
@@ -83,22 +130,22 @@ const FanFeed = () => {
           isScrollingDown ? "translate-y-full" : "translate-y-0"
         }`}>
           <div className="max-w-lg mx-auto flex justify-around py-3">
-            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
+            <Button variant="ghost" className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90">
               <Home className="h-6 w-6" />
               <span>Home</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
+            </Button>
+            <Button variant="ghost" className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90">
               <Compass className="h-6 w-6" />
               <span>Discover</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
+            </Button>
+            <Button variant="ghost" className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90">
               <Radio className="h-6 w-6" />
               <span>Live</span>
-            </button>
-            <button className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90 transition-colors">
+            </Button>
+            <Button variant="ghost" className="flex flex-col items-center gap-1 text-xs text-white hover:text-white/90">
               <Library className="h-6 w-6" />
               <span>Library</span>
-            </button>
+            </Button>
           </div>
         </nav>
       </div>
