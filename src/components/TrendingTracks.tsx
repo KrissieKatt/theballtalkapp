@@ -30,7 +30,7 @@ export const TrendingTracks = () => {
       <h2 className="text-xl font-bold">Trending Tracks</h2>
       <div className="space-y-2">
         {tracks.map((track) => (
-          <Card key={track.id} className="p-4 bg-zinc-900 text-white">
+          <Card key={track.id} className="p-4 bg-[#1a1b1e] border-none">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-zinc-800 rounded-md flex items-center justify-center">
                 <Play className="w-6 h-6" />
@@ -41,10 +41,10 @@ export const TrendingTracks = () => {
                 <p className="text-xs text-zinc-500">{track.plays}</p>
               </div>
               <div className="flex gap-2">
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="hover:bg-white/10">
                   <Heart className="w-4 h-4" />
                 </Button>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="hover:bg-white/10">
                   <Share2 className="w-4 h-4" />
                 </Button>
               </div>

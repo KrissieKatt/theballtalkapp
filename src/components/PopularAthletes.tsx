@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Users } from "lucide-react";
 
 interface Athlete {
   id: string;
@@ -13,7 +14,7 @@ const athletes: Athlete[] = [
     id: "1",
     name: "Marcus Thompson",
     role: "Basketball",
-    followers: "85.1K"
+    followers: "1.2M"
   },
   {
     id: "2",
@@ -27,14 +28,20 @@ export const PopularAthletes = () => {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-bold">Popular Athletes</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {athletes.map((athlete) => (
-          <Card key={athlete.id} className="p-4 bg-zinc-900 text-white">
-            <div className="w-full aspect-square bg-zinc-800 rounded-md mb-4" />
-            <h3 className="font-semibold">{athlete.name}</h3>
+          <Card key={athlete.id} className="p-4 bg-[#1a1b1e] border-none">
+            <div className="w-full aspect-square bg-zinc-800 rounded-lg mb-3" />
+            <h3 className="font-semibold text-sm">{athlete.name}</h3>
             <p className="text-sm text-zinc-400">{athlete.role}</p>
-            <p className="text-xs text-zinc-500 mb-4">{athlete.followers} followers</p>
-            <Button className="w-full" variant="secondary">
+            <div className="flex items-center gap-1 text-xs text-zinc-500 mb-3">
+              <Users className="h-3 w-3" />
+              <span>{athlete.followers}</span>
+            </div>
+            <Button 
+              className="w-full bg-blue-600 hover:bg-blue-700" 
+              size="sm"
+            >
               Follow
             </Button>
           </Card>
