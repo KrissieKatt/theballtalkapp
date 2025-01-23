@@ -8,6 +8,8 @@ import FanFeed from "./pages/FanFeed";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import Studio from "./pages/Studio";
 import ChatRoom from "./pages/ChatRoom";
+import { AthleteLoginForm } from "./components/AthleteLoginForm";
+import { AthleteVerificationForm } from "./components/AthleteVerificationForm";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/artist" element={<ArtistDashboard />} />
           <Route path="/studio" element={<Studio />} />
           <Route path="/chat" element={<ChatRoom />} />
+          <Route path="/athlete/login" element={<AthleteLoginForm />} />
+          <Route path="/athlete/verify" element={<AthleteVerificationForm />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
