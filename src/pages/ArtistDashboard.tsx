@@ -56,6 +56,14 @@ const ArtistDashboard = () => {
     });
   };
 
+  const chartConfig = {
+    type: 'line',
+    height: 300,
+    xField: 'date',
+    yField: 'value',
+    smooth: true,
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 border-b z-50">
@@ -142,7 +150,7 @@ const ArtistDashboard = () => {
             </div>
           </div>
           <div className="h-[300px]">
-            <ChartContainer>
+            <ChartContainer config={chartConfig}>
               <AreaChart data={mockStreamingData}>
                 <defs>
                   <linearGradient id="colorStreams" x1="0" y1="0" x2="0" y2="1">
@@ -196,7 +204,7 @@ const ArtistDashboard = () => {
         <Card className="p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Engagement by Platform</h2>
           <div className="h-[300px]">
-            <ChartContainer>
+            <ChartContainer config={chartConfig}>
               <BarChart data={mockEngagementData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="platform" />

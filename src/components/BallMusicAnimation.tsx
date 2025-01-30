@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Volleyball, Basketball, Baseball, Football, Music2, Music3, Music4 } from 'lucide-react';
+import { Volleyball, CircleDot, Circle, Target, Music2, Music3, Music4 } from 'lucide-react';
 
 export const BallMusicAnimation = () => {
   const [currentBall, setCurrentBall] = useState(0);
-  const balls = [Volleyball, Basketball, Baseball, Football];
+  const balls = [Volleyball, CircleDot, Circle, Target]; // Using available Lucide icons
   const Ball = balls[currentBall];
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const BallMusicAnimation = () => {
       {/* Ball */}
       <div className="absolute w-full animate-[bounce_2s_infinite] group">
         <div className="animate-[roll_4s_linear_infinite]">
-          <Ball className="h-12 w-12 text-white transition-all duration-300" /> {/* Increased from h-8 w-8 to h-12 w-12 */}
+          <Ball className="h-12 w-12 text-white transition-all duration-300" />
         </div>
       </div>
       
