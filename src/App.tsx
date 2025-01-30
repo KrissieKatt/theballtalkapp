@@ -13,6 +13,7 @@ import { AthleteVerificationForm } from "./components/AthleteVerificationForm";
 import AdminDashboard from "./pages/AdminDashboard";
 import BandLab from "./pages/BandLab";
 import BeatMarketplace from "./pages/BeatMarketplace";
+import LiveStreaming from "./pages/LiveStreaming";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="chat" element={<ChatRoom />} />
             <Route path="bandlab" element={<BandLab />} />
             <Route path="beats" element={<BeatMarketplace />} />
+            <Route path="live" element={<LiveStreaming />} />
           </Route>
           
           {/* Athlete routes */}
@@ -42,6 +44,7 @@ const App = () => (
             <Route path="studio" element={<Studio />} />
             <Route path="bandlab" element={<BandLab />} />
             <Route path="beats" element={<BeatMarketplace />} />
+            <Route path="live" element={<LiveStreaming />} />
           </Route>
           
           {/* Admin routes */}
