@@ -28,6 +28,10 @@ export default {
           '50%': { transform: 'translateX(50px) rotate(180deg)' },
           '100%': { transform: 'translateX(-50px) rotate(360deg)' },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         'fade-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -38,6 +42,7 @@ export default {
         }
       },
       animation: {
+        'fade-in': 'fade-in 0.5s ease-out',
         'fade-up': 'fade-up 0.5s ease-out',
         'scale-up': 'scale-up 0.5s ease-out',
       },

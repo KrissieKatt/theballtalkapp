@@ -71,7 +71,7 @@ const Index = () => {
           <img 
             src="/lovable-uploads/6450fd7b-0d43-4e9f-8321-70c86bcd595c.png" 
             alt="The Ball Talk App" 
-            className="h-48 w-auto mx-auto animate-scale-up" 
+            className="h-64 w-auto mx-auto animate-scale-up" // Increased from h-48 to h-64
           />
           <BallMusicAnimation />
           <div className="space-y-4">
