@@ -57,11 +57,33 @@ const ArtistDashboard = () => {
   };
 
   const chartConfig = {
-    type: 'line',
-    height: 300,
-    xField: 'date',
-    yField: 'value',
-    smooth: true,
+    streams: {
+      label: "Streams",
+      color: "hsl(var(--primary))"
+    },
+    downloads: {
+      label: "Downloads",
+      color: "#22c55e"
+    },
+    favorites: {
+      label: "Favorites",
+      color: "#ef4444"
+    }
+  };
+
+  const engagementChartConfig = {
+    likes: {
+      label: "Likes",
+      color: "#ef4444"
+    },
+    shares: {
+      label: "Shares",
+      color: "#3b82f6"
+    },
+    bookmarks: {
+      label: "Bookmarks",
+      color: "#eab308"
+    }
   };
 
   return (
@@ -204,7 +226,7 @@ const ArtistDashboard = () => {
         <Card className="p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Engagement by Platform</h2>
           <div className="h-[300px]">
-            <ChartContainer config={chartConfig}>
+            <ChartContainer config={engagementChartConfig}>
               <BarChart data={mockEngagementData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="platform" />
