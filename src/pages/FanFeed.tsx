@@ -106,7 +106,9 @@ const FanFeed = () => {
           <section className="space-y-3">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold text-white">Trending Now</h2>
-              <Button variant="link" className="text-white">View All</Button>
+              <Button variant="link" className="text-white" asChild>
+                <a href="/fan/tracks">See All</a>
+              </Button>
             </div>
             <p className="text-white/70 text-sm">Most popular tracks this week</p>
             <TrendingTracks />
