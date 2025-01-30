@@ -56,7 +56,7 @@ const Discovery = () => {
 
         {/* Featured Athletes */}
         <section>
-          <h2 className="text-xl font-bold mb-4">Featured Athletes</h2>
+          <h2 className="text-xl font-bold mb-4 text-white">Featured Athletes</h2>
           <FeaturedAthletes />
         </section>
 
@@ -68,13 +68,13 @@ const Discovery = () => {
 
         {/* Trending Tracks */}
         <section>
-          <h2 className="text-xl font-bold mb-4">Trending Tracks</h2>
+          <h2 className="text-xl font-bold mb-4 text-white">Trending Tracks</h2>
           <TrendingTracks />
         </section>
 
         {/* Genres & Moods */}
         <section>
-          <h2 className="text-xl font-bold mb-4">Genres & Moods</h2>
+          <h2 className="text-xl font-bold mb-4 text-white">Genres & Moods</h2>
           <GenresMoods />
         </section>
       </div>

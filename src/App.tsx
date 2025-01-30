@@ -14,6 +14,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import BandLab from "./pages/BandLab";
 import BeatMarketplace from "./pages/BeatMarketplace";
 import LiveStreaming from "./pages/LiveStreaming";
+import Discovery from "./pages/Discovery";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           {/* Fan routes */}
           <Route path="/fan">
             <Route path="feed" element={<FanFeed />} />
+            <Route path="discover" element={<Discovery />} />
             <Route path="chat" element={<ChatRoom />} />
             <Route path="bandlab" element={<BandLab />} />
             <Route path="beats" element={<BeatMarketplace />} />
