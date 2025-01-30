@@ -5,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { FeaturedAthletes } from "@/components/FeaturedAthletes";
 import { TrendingTracks } from "@/components/TrendingTracks";
 import { GenresMoods } from "@/components/GenresMoods";
+import { LiveSection } from "@/components/LiveSection";
+import { PodcastSection } from "@/components/PodcastSection";
+import { ProductionTools } from "@/components/ProductionTools";
 
 const sportsCategories = [
   { name: "All", count: "1.2K" },
@@ -16,13 +19,13 @@ const sportsCategories = [
 const Discovery = () => {
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-white">
-      <div className="max-w-lg mx-auto px-4 py-6 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 py-6 space-y-8">
         {/* Search Section */}
         <div className="relative flex items-center gap-2">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input 
-              placeholder="Search artists, tracks, or sports..." 
+              placeholder="Search artists, tracks, podcasts, or sports..." 
               className="w-full bg-[#1A1B1E] border-none pl-10 text-primary-foreground placeholder:text-muted-foreground"
             />
           </div>
@@ -48,11 +51,20 @@ const Discovery = () => {
           ))}
         </div>
 
+        {/* Live Streaming Section */}
+        <LiveSection />
+
         {/* Featured Athletes */}
         <section>
           <h2 className="text-xl font-bold mb-4">Featured Athletes</h2>
           <FeaturedAthletes />
         </section>
+
+        {/* Podcasts Section */}
+        <PodcastSection />
+
+        {/* Production Tools */}
+        <ProductionTools />
 
         {/* Trending Tracks */}
         <section>
