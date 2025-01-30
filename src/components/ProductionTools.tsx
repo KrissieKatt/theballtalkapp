@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Music2, Mic2, Waveform, ArrowRight } from "lucide-react";
+import { Music2, Mic2, AudioWaveform, ArrowRight } from "lucide-react";
 
 const tools = [
   {
@@ -12,7 +12,7 @@ const tools = [
   {
     name: "Beat Marketplace",
     description: "Find and purchase beats from top producers",
-    icon: Waveform,
+    icon: AudioWaveform,
     link: "/fan/beats"
   },
   {
