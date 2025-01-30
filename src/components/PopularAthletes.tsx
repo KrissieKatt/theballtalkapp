@@ -31,13 +31,13 @@ const athletes: Athlete[] = [
 export const PopularAthletes = () => {
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-bold">Popular Athletes</h2>
+      <h2 className="text-xl font-bold text-white">Popular Athletes</h2>
       <div className="grid grid-cols-2 gap-4">
         {athletes.map((athlete) => (
           <Card key={athlete.id} className="p-4 bg-[#1a1b1e] border-none">
             <div className="w-full aspect-square bg-zinc-800 rounded-lg mb-3" />
             <div className="flex items-center gap-2 justify-center">
-              <h3 className="font-semibold text-sm">{athlete.name}</h3>
+              <h3 className="font-semibold text-sm text-white">{athlete.name}</h3>
               {athlete.isVerified && (
                 <TooltipProvider>
                   <Tooltip>

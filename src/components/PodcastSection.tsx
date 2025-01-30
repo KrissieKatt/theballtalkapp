@@ -22,7 +22,7 @@ const podcasts = [
 export const PodcastSection = () => {
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Featured Podcasts</h2>
+      <h2 className="text-xl font-semibold text-white">Featured Podcasts</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {podcasts.map((podcast) => (
           <Card 
@@ -38,7 +38,7 @@ export const PodcastSection = () => {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold">{podcast.title}</h3>
+                <h3 className="font-semibold text-white">{podcast.title}</h3>
                 <div className="flex items-center gap-1 text-sm text-white/70 mt-1">
                   <Mic className="h-3 w-3" />
                   <span>{podcast.host}</span>

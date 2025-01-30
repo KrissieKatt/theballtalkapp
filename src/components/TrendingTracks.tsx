@@ -49,7 +49,7 @@ export const TrendingTracks = () => {
           <div className="space-y-1">
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1">
-                <h3 className="font-semibold text-sm truncate">{track.title}</h3>
+                <h3 className="font-semibold text-sm truncate text-white">{track.title}</h3>
                 <p className="text-xs text-muted-foreground truncate">{track.artist}</p>
               </div>
               <Button variant="ghost" size="icon" className="h-8 w-8">
