@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Volleyball, Basketball, CircleDot, Circle, Target, Music2, Music3, Music4 } from 'lucide-react';
+import { Volleyball, Circle, CircleDot, Target, Music2, Music3, Music4 } from 'lucide-react';
 
 export const BallMusicAnimation = () => {
   const [currentBall, setCurrentBall] = useState(0);
   const balls = [
-    { icon: Basketball, label: 'Basketball' },
+    { icon: Circle, label: 'Basketball' },
     { icon: Volleyball, label: 'Volleyball' },
     { icon: CircleDot, label: 'Football' },
     { icon: Target, label: 'Baseball' }
