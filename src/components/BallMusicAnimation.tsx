@@ -1,41 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { Volleyball, Circle, CircleDot, Target, Music2, Music3, Music4 } from 'lucide-react';
+import { Volleyball, Circle, CircleDot, Target, Music2, Music3, Music4, Mic } from 'lucide-react';
 
 export const BallMusicAnimation = () => {
   const [currentBall, setCurrentBall] = useState(0);
+  const [currentMusic, setCurrentMusic] = useState(0);
+  
   const balls = [
     { icon: Circle, label: 'Basketball' },
     { icon: Volleyball, label: 'Volleyball' },
     { icon: CircleDot, label: 'Football' },
-    { icon: Target, label: 'Baseball' }
+    { icon: Target, label: 'Baseball' },
+    { icon: Mic, label: 'Podcast' }
   ];
-  
-  const CurrentBall = balls[currentBall].icon;
+
+  const musicNotes = [Music2, Music3, Music4];
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const ballInterval = setInterval(() => {
       setCurrentBall((prev) => (prev + 1) % balls.length);
     }, 2000);
 
-    return () => clearInterval(interval);
+    const musicInterval = setInterval(() => {
+      setCurrentMusic((prev) => (prev + 1) % musicNotes.length);
+    }, 1000);
+
+    return () => {
+      clearInterval(ballInterval);
+      clearInterval(musicInterval);
+    };
   }, []);
 
+  const CurrentBall = balls[currentBall].icon;
+  const CurrentMusic = musicNotes[currentMusic];
+
   return (
-    <div className="relative h-32 w-32 mx-auto">
-      {/* Ball */}
-      <div className="absolute w-full animate-[bounce_2s_infinite] group">
-        <div className="animate-[roll_4s_linear_infinite]">
-          <CurrentBall className="h-12 w-12 text-white transition-all duration-300" />
-        </div>
+    <div className="relative w-full h-64 flex items-center justify-center">
+      <div className="absolute transform transition-all duration-500 ease-in-out">
+        <CurrentBall className="h-16 w-16 text-white animate-bounce" />
       </div>
-      
-      {/* Music Notes */}
-      <div className="absolute top-16 left-1/2 -translate-x-1/2">
-        <div className="relative">
-          <Music2 className="absolute -left-8 h-6 w-6 text-white animate-[fade-in_0.5s_ease-out_0.5s_forwards,float_3s_ease-in-out_infinite] opacity-0" />
-          <Music3 className="absolute left-0 h-6 w-6 text-white animate-[fade-in_0.5s_ease-out_0.7s_forwards,float_2.5s_ease-in-out_infinite] opacity-0" />
-          <Music4 className="absolute left-8 h-6 w-6 text-white animate-[fade-in_0.5s_ease-out_0.9s_forwards,float_3.5s_ease-in-out_infinite] opacity-0" />
-        </div>
+      <div className="absolute -left-4 top-1/2 transform -translate-y-1/2">
+        <CurrentMusic className="h-8 w-8 text-white animate-pulse" />
+      </div>
+      <div className="absolute -right-4 top-1/2 transform -translate-y-1/2">
+        <CurrentMusic className="h-8 w-8 text-white animate-pulse" />
       </div>
     </div>
   );
