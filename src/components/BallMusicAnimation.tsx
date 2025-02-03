@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Volleyball, CircleDot, Circle, Target, Music2, Music3, Music4 } from 'lucide-react';
+import { Volleyball, Basketball, CircleDot, Circle, Target, Music2, Music3, Music4 } from 'lucide-react';
 
 export const BallMusicAnimation = () => {
   const [currentBall, setCurrentBall] = useState(0);
-  const balls = [Volleyball, CircleDot, Circle, Target]; // Using available Lucide icons
-  const Ball = balls[currentBall];
+  const balls = [
+    { icon: Basketball, label: 'Basketball' },
+    { icon: Volleyball, label: 'Volleyball' },
+    { icon: CircleDot, label: 'Football' },
+    { icon: Target, label: 'Baseball' }
+  ];
+  
+  const CurrentBall = balls[currentBall].icon;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,7 +25,7 @@ export const BallMusicAnimation = () => {
       {/* Ball */}
       <div className="absolute w-full animate-[bounce_2s_infinite] group">
         <div className="animate-[roll_4s_linear_infinite]">
-          <Ball className="h-12 w-12 text-white transition-all duration-300" />
+          <CurrentBall className="h-12 w-12 text-white transition-all duration-300" />
         </div>
       </div>
       
