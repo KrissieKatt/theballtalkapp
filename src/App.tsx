@@ -11,6 +11,7 @@ import BeatMarketplace from "./pages/BeatMarketplace";
 import LiveStreaming from "./pages/LiveStreaming";
 import Discovery from "./pages/Discovery";
 import AllTracks from "./pages/AllTracks";
+import Podcasts from "./pages/Podcasts";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="studio" element={<Studio />} />
             <Route path="live" element={<LiveStreaming />} />
             <Route path="tracks" element={<AllTracks />} />
+            <Route path="podcasts" element={<Podcasts />} />
           </Route>
         </Routes>
       </BrowserRouter>
