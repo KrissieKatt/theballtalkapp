@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { MessageCircle, Send, User } from "lucide-react";
+import { MessageCircle, Send, User, Crown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ export const LiveChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Welcome to the live chat!",
+      text: "Welcome to the premium live chat!",
       sender: "system",
       timestamp: new Date(),
     },
@@ -44,9 +45,15 @@ export const LiveChat = () => {
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)] apple-card">
-      <div className="flex items-center gap-2 p-4 border-b border-white/10">
-        <MessageCircle className="w-5 h-5 text-primary" />
-        <h2 className="text-lg font-semibold">Live Chat</h2>
+      <div className="flex items-center justify-between p-4 border-b border-white/10">
+        <div className="flex items-center gap-2">
+          <MessageCircle className="w-5 h-5 text-primary" />
+          <h2 className="text-lg font-semibold">Live Chat</h2>
+        </div>
+        <div className="flex items-center gap-2 px-3 py-1 bg-yellow-500/10 rounded-full">
+          <Crown className="w-4 h-4 text-yellow-500" />
+          <span className="text-sm text-yellow-500 font-medium">Premium</span>
+        </div>
       </div>
 
       <ScrollArea className="flex-1 p-4">
