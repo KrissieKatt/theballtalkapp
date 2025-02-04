@@ -14,6 +14,8 @@ import Discovery from "./pages/Discovery";
 import AllTracks from "./pages/AllTracks";
 import Podcasts from "./pages/Podcasts";
 import Profile from "./pages/Profile";
+import { AthleteLoginForm } from "./components/AthleteLoginForm";
+import { AthleteVerificationForm } from "./components/AthleteVerificationForm";
 
 const queryClient = new QueryClient();
 
@@ -27,8 +29,12 @@ function App() {
           {/* Admin routes */}
           <Route path="/admin" element={<AdminDashboard />} />
           
-          {/* Artist routes */}
+          {/* Artist/Athlete routes */}
           <Route path="/artist" element={<ArtistDashboard />} />
+          <Route path="/athlete">
+            <Route path="login" element={<AthleteLoginForm />} />
+            <Route path="verify" element={<AthleteVerificationForm />} />
+          </Route>
           
           {/* Fan routes */}
           <Route path="/fan">
