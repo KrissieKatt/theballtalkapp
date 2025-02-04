@@ -1,3 +1,4 @@
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
@@ -12,6 +13,7 @@ import LiveStreaming from "./pages/LiveStreaming";
 import Discovery from "./pages/Discovery";
 import AllTracks from "./pages/AllTracks";
 import Podcasts from "./pages/Podcasts";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,7 @@ function App() {
             <Route path="live" element={<LiveStreaming />} />
             <Route path="tracks" element={<AllTracks />} />
             <Route path="podcasts" element={<Podcasts />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
