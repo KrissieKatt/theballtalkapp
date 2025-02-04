@@ -12,16 +12,42 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_FILE_TYPES = ["application/pdf", "image/jpeg", "image/png"];
+
 const formSchema = z.object({
-  fullName: z.string().min(2),
-  teamName: z.string().min(2),
-  sportType: z.string().min(2),
-  idNumber: z.string().min(6),
+  fullName: z.string().min(2, "Full name must be at least 2 characters"),
+  teamName: z.string().min(2, "Team name must be at least 2 characters"),
+  sportType: z.string().min(2, "Sport type must be at least 2 characters"),
+  idNumber: z.string().min(6, "ID number must be at least 6 characters"),
+  idDocument: z
+    .any()
+    .refine((file) => file?.length > 0, "ID document is required")
+    .refine(
+      (file) => file?.[0]?.size <= MAX_FILE_SIZE,
+      "Max file size is 5MB"
+    )
+    .refine(
+      (file) => ACCEPTED_FILE_TYPES.includes(file?.[0]?.type),
+      "Only .pdf, .jpg, and .png files are accepted"
+    ),
+  contractDocument: z
+    .any()
+    .refine((file) => file?.length > 0, "Contract document is required")
+    .refine(
+      (file) => file?.[0]?.size <= MAX_FILE_SIZE,
+      "Max file size is 5MB"
+    )
+    .refine(
+      (file) => ACCEPTED_FILE_TYPES.includes(file?.[0]?.type),
+      "Only .pdf, .jpg, and .png files are accepted"
+    ),
 });
 
 export const AthleteVerificationForm = () => {
@@ -41,8 +67,12 @@ export const AthleteVerificationForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
-      // In a real app, this would make an API call to verify the athlete
-      console.log("Verification submission:", values);
+      // In a real app, this would upload the files and verify the athlete
+      console.log("Verification submission:", {
+        ...values,
+        idDocument: values.idDocument[0],
+        contractDocument: values.contractDocument[0],
+      });
       toast.success("Verification submitted successfully!");
       navigate("/artist");
     } catch (error) {
@@ -105,6 +135,48 @@ export const AthleteVerificationForm = () => {
                 <FormControl>
                   <Input placeholder="123456" {...field} />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="idDocument"
+            render={({ field: { onChange, value, ...field } }) => (
+              <FormItem>
+                <FormLabel>ID Document</FormLabel>
+                <FormControl>
+                  <Input
+                    type="file"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    onChange={(e) => onChange(e.target.files)}
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  Upload a valid ID document (max 5MB, PDF, JPG, or PNG)
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="contractDocument"
+            render={({ field: { onChange, value, ...field } }) => (
+              <FormItem>
+                <FormLabel>Contract/Team Document</FormLabel>
+                <FormControl>
+                  <Input
+                    type="file"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    onChange={(e) => onChange(e.target.files)}
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  Upload your current contract or team affiliation document (max 5MB, PDF, JPG, or PNG)
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
